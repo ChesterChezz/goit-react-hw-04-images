@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
 
-export const ImageGalleryItem = ({ card }) => {
+const ImageGalleryItem = ({ card }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -27,4 +27,5 @@ export const ImageGalleryItem = ({ card }) => {
     </>
   );
 };
+
 export default ImageGalleryItem;
