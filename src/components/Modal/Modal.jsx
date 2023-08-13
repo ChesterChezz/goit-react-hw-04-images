@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 const Modal = ({ src, alt, closeModal }) => {
-  const handleEscKey = event => {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
-  };
+  const handleEscKey = useCallback(
+    event => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
 
   const handleOverlayClick = event => {
     if (event.target.classList.contains('overlay')) {
@@ -19,7 +22,7 @@ const Modal = ({ src, alt, closeModal }) => {
     return () => {
       document.removeEventListener('keydown', handleEscKey);
     };
-  }, [closeModal]);
+  }, [handleEscKey]);
 
   return (
     <div className="overlay" onClick={handleOverlayClick}>
